@@ -509,19 +509,17 @@ section {
 #team { background: var(--dark2); }
 
 .team-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 30px;
   max-width: 1000px;
   margin: 0 auto;
 }
 
 .team-card {
-  flex: 0 0 320px;
   background: var(--glass);
   border: 1px solid var(--glass-border);
-  padding: 50px 40px;
+  padding: 40px 30px;
   text-align: center;
   transition: all 0.4s;
   opacity: 0;
@@ -639,8 +637,7 @@ footer {
   section { padding: 80px 24px; }
 
   .features-grid { grid-template-columns: 1fr 1fr; }
-  .team-grid { max-width: 400px; }
-  .team-card { flex: 1 1 100%; }
+  .team-grid { grid-template-columns: 1fr; max-width: 400px; }
 
   .timeline-track::before { left: 20px; }
   .tl-item.left, .tl-item.right { flex-direction: row; }
