@@ -509,12 +509,16 @@ section {
 #team { background: var(--dark2); }
 
 .team-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 30px;
   max-width: 1000px;
   margin: 0 auto;
 }
+
+.team-card {
+  flex: 0 1 300px;
 
 .team-card {
   background: var(--glass);
@@ -637,7 +641,8 @@ footer {
   section { padding: 80px 24px; }
 
   .features-grid { grid-template-columns: 1fr 1fr; }
-  .team-grid { grid-template-columns: 1fr; max-width: 400px; }
+  .team-grid { max-width: 400px; }
+  .team-card { flex: 1 1 100%; }
 
   .timeline-track::before { left: 20px; }
   .tl-item.left, .tl-item.right { flex-direction: row; }
