@@ -519,8 +519,6 @@ section {
 
 .team-card {
   flex: 0 1 300px;
-
-.team-card {
   background: var(--glass);
   border: 1px solid var(--glass-border);
   padding: 40px 30px;
