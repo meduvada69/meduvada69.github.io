@@ -1,498 +1,698 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Kamal Model Sr. Sec. School 2040</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="style.css"/>
-</head>
-<body>
+:root {
+  --neon: #00f5ff;
+  --neon2: #7b2fff;
+  --neon3: #ff2d78;
+  --dark: #04060f;
+  --dark2: #080d1a;
+  --glass: rgba(0,245,255,0.04);
+  --glass-border: rgba(0,245,255,0.12);
+  --text: #c8e6f5;
+  --text-dim: #4a6a88;
+}
 
-  <div id="cursor"></div>
-  <div id="cursor-ring"></div>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--dark);
+  color: var(--text);
+  font-family: 'Exo 2', sans-serif;
+  overflow-x: hidden;
+  a, button, * {
+  cursor: none !important;
+}
+}
 
-  <!-- Particle canvas -->
-  <canvas id="particles"></canvas>
+/* ── CURSOR ── */
+#cursor {
+  width: 10px; height: 10px;
+  background: var(--neon);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%,-50%);
+  box-shadow: 0 0 12px var(--neon), 0 0 30px rgba(0,245,255,0.4);
+  transition: transform 0.08s;
+}
+#cursor-ring {
+  width: 34px; height: 34px;
+  border: 1px solid rgba(0,245,255,0.5);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%,-50%);
+  transition: all 0.15s ease;
+}
+body:hover #cursor-ring { opacity: 1; }
 
-  <!-- NAV -->
-  <nav id="navbar">
-    <div class="nav-logo">KM<span>S</span>2040</div>
-    <ul class="nav-links">
-      <li><a href="#hero">Home</a></li>
-      <li><a href="#timeline">Timeline</a></li>
-      <li><a href="#features">Features</a></li>
-      <li><a href="#team">Visionaries</a></li>
-    </ul>
-    <div class="nav-status">
-      <span class="status-dot"></span> LIVE — 2024
-    </div>
-  </nav>
+/* ── PARTICLES CANVAS ── */
+#particles {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
 
-  <!-- HERO -->
-  <section id="hero">
-    <div class="hero-grid-overlay"></div>
-    <div class="hero-content">
-      <p class="hero-eyebrow">EST. 1993 &nbsp;|&nbsp; REIMAGINED 2040</p>
-      <h1 class="hero-title">
-        The School<br/>
-        <span class="glitch" data-text="of Tomorrow">of Tomorrow</span>
-      </h1>
-      <p class="hero-sub">
-        A celebrated West Delhi institution evolving beyond brick and mortar —<br/>
-        into light, intelligence, and possibility.
-      </p>
-      <div class="hero-btns">
-        <a href="#timeline" class="btn-primary">Explore the Future</a>
-        <a href="#features" class="btn-ghost">View Features</a>
-      </div>
-    </div>
-    <div class="hero-orb"></div>
-    <div class="hero-orb orb2"></div>
-    <div class="scroll-hint">SCROLL &darr;</div>
-  </section>
+/* ── NAVBAR ── */
+#navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 60px;
+  background: rgba(4,6,15,0.7);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--glass-border);
+  transition: padding 0.3s;
+}
+#navbar.scrolled { padding: 12px 60px; }
 
-  <!-- TIMELINE -->
-  <section id="timeline">
-    <div class="section-header">
-      <span class="section-tag">EVOLUTION</span>
-      <h2>The Road to <span class="accent">2040</span></h2>
-      <p>Key milestones in our transformation journey</p>
-    </div>
-    <div class="timeline-track">
+.nav-logo {
+  font-family: 'Orbitron', monospace;
+  font-size: 1.4rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  color: #fff;
+}
+.nav-logo span { color: var(--neon); }
 
-      <div class="tl-item left" data-year="2024">
-        <div class="tl-card">
-          <div class="tl-year">2024</div>
-          <h3>The Baseline</h3>
-          <p>Traditional classrooms, physical labs, printed textbooks, and a campus built for the 20th century.</p>
-        </div>
-        <div class="tl-dot"></div>
-      </div>
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 40px;
+}
+.nav-links a {
+  text-decoration: none;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  transition: color 0.3s;
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0; right: 0;
+  height: 1px;
+  background: var(--neon);
+  transform: scaleX(0);
+  transition: transform 0.3s;
+}
+.nav-links a:hover { color: var(--neon); }
+.nav-links a:hover::after { transform: scaleX(1); }
 
-      <div class="tl-item right" data-year="2027">
-        <div class="tl-dot"></div>
-        <div class="tl-card">
-          <div class="tl-year">2027</div>
-          <h3>Digital Overhaul</h3>
-          <p>Smart boards replace chalkboards. Every student gets a personal AI learning assistant. School goes paperless.</p>
-        </div>
-      </div>
+.nav-status {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: var(--text-dim);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.status-dot {
+  width: 7px; height: 7px;
+  background: var(--neon);
+  border-radius: 50%;
+  animation: blink 1.5s infinite;
+}
+@keyframes blink {
+  0%,100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
 
-      <div class="tl-item left" data-year="2030">
-        <div class="tl-card">
-          <div class="tl-year">2030</div>
-          <h3>AR Campus Launch</h3>
-          <p>Augmented Reality overlays transform corridors into interactive knowledge zones. Labs become holographic simulation chambers.</p>
-        </div>
-        <div class="tl-dot"></div>
-      </div>
+/* ── HERO ── */
+#hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  overflow: hidden;
+}
 
-      <div class="tl-item right" data-year="2033">
-        <div class="tl-dot"></div>
-        <div class="tl-card">
-          <div class="tl-year">2033</div>
-          <h3>Neural Learning Pods</h3>
-          <p>Personalized learning pods adapt in real-time to each student's brainwave patterns and comprehension speed.</p>
-        </div>
-      </div>
+.hero-grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,245,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,245,255,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: gridShift 20s linear infinite;
+}
+@keyframes gridShift {
+  0% { background-position: 0 0; }
+  100% { background-position: 60px 60px; }
+}
 
-      <div class="tl-item left" data-year="2037">
-        <div class="tl-card">
-          <div class="tl-year">2037</div>
-          <h3>Zero-Carbon Campus</h3>
-          <p>Solar glass walls, kinetic floor tiles, and a vertical garden system make the school fully self-sustaining.</p>
-        </div>
-        <div class="tl-dot"></div>
-      </div>
+.hero-orb {
+  position: absolute;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(123,47,255,0.15) 0%, transparent 70%);
+  top: 50%; left: 50%;
+  transform: translate(-20%, -60%);
+  animation: orbPulse 6s ease-in-out infinite;
+}
+.orb2 {
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(0,245,255,0.1) 0%, transparent 70%);
+  transform: translate(-80%, -20%);
+  animation-delay: -3s;
+}
+@keyframes orbPulse {
+  0%,100% { transform: translate(-20%, -60%) scale(1); opacity: 0.7; }
+  50% { transform: translate(-20%, -60%) scale(1.15); opacity: 1; }
+}
 
-      <div class="tl-item right" data-year="2040">
-        <div class="tl-dot pulse-dot"></div>
-        <div class="tl-card highlight-card">
-          <div class="tl-year neon-year">2040</div>
-          <h3>The Vision Realized</h3>
-          <p>A fully sentient campus ecosystem — adaptive, sustainable, and borderless. Education without limits.</p>
-        </div>
-      </div>
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 800px;
+  padding: 0 30px;
+}
 
-    </div>
-  </section>
+.hero-eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--neon);
+  margin-bottom: 24px;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.3s forwards;
+}
 
-  <!-- FEATURES -->
-  <section id="features">
-    <div class="section-header">
-      <span class="section-tag">INNOVATIONS</span>
-      <h2>What <span class="accent">Changes</span> Everything</h2>
-      <p>Six pillars of the 2040 campus experience</p>
-    </div>
-    <div class="features-grid">
+.hero-title {
+  font-family: 'Orbitron', monospace;
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 900;
+  line-height: 1.05;
+  color: #fff;
+  margin-bottom: 28px;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.5s forwards;
+}
 
-      <div class="feat-card" data-index="0">
-        <div class="feat-icon">⬡</div>
-        <h3>Holographic Classrooms</h3>
-        <p>Teachers and students meet in shared 3D environments. Geography is no longer a barrier to world-class education.</p>
-        <div class="feat-line"></div>
-      </div>
+/* Glitch effect */
+.glitch {
+  position: relative;
+  color: var(--neon);
+  display: inline-block;
+}
+.glitch::before, .glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0; left: 0;
+  color: var(--neon);
+}
+.glitch::before {
+  left: 2px;
+  text-shadow: -2px 0 var(--neon3);
+  clip-path: polygon(0 20%, 100% 20%, 100% 40%, 0 40%);
+  animation: glitch1 4s infinite;
+}
+.glitch::after {
+  left: -2px;
+  text-shadow: 2px 0 var(--neon2);
+  clip-path: polygon(0 60%, 100% 60%, 100% 80%, 0 80%);
+  animation: glitch2 4s infinite;
+}
+@keyframes glitch1 {
+  0%,90%,100% { transform: none; opacity: 0; }
+  92% { transform: translateX(-4px); opacity: 1; }
+  94% { transform: translateX(4px); opacity: 1; }
+  96% { transform: none; opacity: 0; }
+}
+@keyframes glitch2 {
+  0%,90%,100% { transform: none; opacity: 0; }
+  93% { transform: translateX(4px); opacity: 1; }
+  95% { transform: translateX(-4px); opacity: 1; }
+  97% { transform: none; opacity: 0; }
+}
 
-      <div class="feat-card" data-index="1">
-        <div class="feat-icon">◈</div>
-        <h3>AI Mentor System</h3>
-        <p>Each student is paired with a personalised AI that tracks learning gaps, emotional wellbeing, and career trajectory.</p>
-        <div class="feat-line"></div>
-      </div>
+.hero-sub {
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: var(--text-dim);
+  line-height: 1.8;
+  margin-bottom: 44px;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.7s forwards;
+}
 
-      <div class="feat-card" data-index="2">
-        <div class="feat-icon">⬙</div>
-        <h3>Biometric Security</h3>
-        <p>Facial recognition entry, emotion-aware attendance, and real-time health monitoring keep students safe at all times.</p>
-        <div class="feat-line"></div>
-      </div>
+.hero-btns {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.9s forwards;
+}
 
-      <div class="feat-card" data-index="3">
-        <div class="feat-icon">◯</div>
-        <h3>Neural Skill Labs</h3>
-        <p>Hands-on labs where students build, code, and simulate — from quantum circuits to genetic engineering prototypes.</p>
-        <div class="feat-line"></div>
-      </div>
+.btn-primary {
+  display: inline-block;
+  padding: 14px 36px;
+  background: var(--neon);
+  color: var(--dark);
+  font-family: 'Orbitron', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  clip-path: polygon(12px 0, 100% 0, calc(100% - 12px) 100%, 0 100%);
+  transition: all 0.3s;
+  box-shadow: 0 0 30px rgba(0,245,255,0.3);
+}
+.btn-primary:hover {
+  background: #fff;
+  box-shadow: 0 0 50px rgba(0,245,255,0.6);
+  transform: translateY(-2px);
+}
 
-      <div class="feat-card" data-index="4">
-        <div class="feat-icon">⬡</div>
-        <h3>Eco-Smart Architecture</h3>
-        <p>Living walls, solar-integrated glass, and rainwater loops create a campus that breathes and powers itself.</p>
-        <div class="feat-line"></div>
-      </div>
+.btn-ghost {
+  display: inline-block;
+  padding: 13px 36px;
+  border: 1px solid var(--glass-border);
+  color: var(--text);
+  font-family: 'Orbitron', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  clip-path: polygon(12px 0, 100% 0, calc(100% - 12px) 100%, 0 100%);
+  transition: all 0.3s;
+}
+.btn-ghost:hover {
+  border-color: var(--neon);
+  color: var(--neon);
+  box-shadow: 0 0 20px rgba(0,245,255,0.1);
+}
 
-      <div class="feat-card" data-index="5">
-        <div class="feat-icon">◈</div>
-        <h3>Global Classrooms</h3>
-        <p>Real-time language translation lets students collaborate with peers in Tokyo, São Paulo, or Nairobi — live.</p>
-        <div class="feat-line"></div>
-      </div>
+.scroll-hint {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  color: var(--text-dim);
+  animation: bounce 2s infinite;
+}
+@keyframes bounce {
+  0%,100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(8px); }
+}
 
-    </div>
-  </section>
+/* ── SECTIONS COMMON ── */
+section {
+  position: relative;
+  z-index: 1;
+  padding: 120px 60px;
+}
 
-  <!-- TEAM -->
-  <section id="team">
-    <div class="section-header">
-      <span class="section-tag">VISIONARIES</span>
-      <h2>The Minds <span class="accent">Behind</span> the Dream</h2>
-      <p>Students and faculty who dared to imagine 2040</p>
-    </div>
-    <div class="team-grid">
+.section-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+.section-tag {
+  display: inline-block;
+  font-size: 0.65rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--neon);
+  border: 1px solid var(--glass-border);
+  padding: 6px 16px;
+  margin-bottom: 20px;
+}
+.section-header h2 {
+  font-family: 'Orbitron', monospace;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 14px;
+}
+.section-header p {
+  color: var(--text-dim);
+  font-size: 0.95rem;
+  font-weight: 300;
+}
+.accent { color: var(--neon); }
 
-      <div class="team-card">
-        <div class="team-avatar" style="--c:#00f5ff">AJ</div>
-        <h3>Atulya Jha</h3>
-        <p class="team-role">Lead Designer & Developer</p>
-        <p class="team-bio">Grade 9 technologist with a vision for AI-powered education and zero boundaries.</p>
-        <div class="team-tags">
-          <span>HTML/CSS/JS</span><span>AI</span><span>Design</span>
-        </div>
-      </div>
+/* ── TIMELINE ── */
+#timeline { background: var(--dark2); }
 
-      <div class="team-card">
-        <div class="team-avatar" style="--c:#7b2fff">AP</div>
-        <h3>Ansh Pandey</h3>
-        <p class="team-role">Backend Expert</p>
-        <p class="team-bio">A 11th Grader with excitement and enthusiasm for tech.</p>
-        <div class="team-tags">
-          <span>Leadership</span><span>Vision</span>
-        </div>
-      </div>
+.timeline-track {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+}
+.timeline-track::before {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, var(--neon), var(--neon2), transparent);
+  transform: translateX(-50%);
+}
 
-    </div>
-  </section>
+.tl-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 60px;
+  opacity: 0;
+  transition: opacity 0.6s, transform 0.6s;
+}
+.tl-item.left { flex-direction: row; transform: translateX(-40px); }
+.tl-item.right { flex-direction: row-reverse; transform: translateX(40px); }
+.tl-item.visible { opacity: 1; transform: translateX(0); }
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-glow"></div>
-    <p class="footer-logo">KM<span>S</span>2040</p>
-    <p class="footer-text">A vision project by students of Kamal Model Sr. Sec. School &nbsp;|&nbsp; Competition Entry 2024</p>
-    <p class="footer-sub">Designed with ambition. Built for tomorrow.</p>
-  </footer>
+.tl-card {
+  width: calc(50% - 50px);
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  padding: 28px 30px;
+  backdrop-filter: blur(10px);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.tl-card:hover {
+  border-color: rgba(0,245,255,0.4);
+  box-shadow: 0 0 30px rgba(0,245,255,0.05);
+}
+.tl-year {
+  font-family: 'Orbitron', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--neon);
+  margin-bottom: 10px;
+}
+.neon-year {
+  font-size: 0.85rem;
+  text-shadow: 0 0 15px var(--neon);
+}
+.tl-card h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 10px;
+}
+.tl-card p {
+  font-size: 0.88rem;
+  color: var(--text-dim);
+  line-height: 1.7;
+}
+.highlight-card {
+  border-color: rgba(0,245,255,0.3);
+  background: rgba(0,245,255,0.06);
+  box-shadow: 0 0 40px rgba(0,245,255,0.08);
+}
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  <script src="script.js"></script>
+.tl-dot {
+  width: 14px; height: 14px;
+  background: var(--neon);
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin: 0 18px;
+  box-shadow: 0 0 12px var(--neon);
+  position: relative;
+  z-index: 2;
+}
+.pulse-dot::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 1px solid var(--neon);
+  animation: ripple 2s infinite;
+}
+@keyframes ripple {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
 
-  <!-- CHATBOT -->
-  <div id="chatbot-bubble" onclick="toggleChat()">💬</div>
+/* ── FEATURES ── */
+#features { background: var(--dark); }
 
-  <div id="chatbot-window">
-    <div id="chat-header">
-      <span>KMS Assistant</span>
-      <button onclick="toggleChat()" id="chat-close">✕</button>
-    </div>
-    <div id="chat-messages">
-      <div class="bot-msg">Hi! I'm the KMS 2040 AI assistant. Ask me anything about the school or the 2040 vision! 🚀</div>
-      
-    </div>
-  </div>
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
 
-  <style>
-    #chatbot-bubble {
-      position: fixed;
-      bottom: 30px; right: 30px;
-      width: 56px; height: 56px;
-      background: var(--neon);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.4rem;
-      cursor: none;
-      z-index: 999;
-      box-shadow: 0 0 20px rgba(0,245,255,0.5);
-      transition: transform 0.3s;
-    }
-    #chatbot-bubble:hover { transform: scale(1.1); }
+.feat-card {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  padding: 44px 36px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s;
+  opacity: 0;
+  transform: translateY(30px);
+}
+.feat-card.visible { opacity: 1; transform: translateY(0); }
+.feat-card:hover {
+  background: rgba(0,245,255,0.06);
+  border-color: rgba(0,245,255,0.35);
+  transform: translateY(-4px);
+}
+.feat-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px;
+  height: 0;
+  background: linear-gradient(to bottom, var(--neon), var(--neon2));
+  transition: height 0.4s;
+}
+.feat-card:hover::before { height: 100%; }
 
-    #chatbot-window {
-      position: fixed;
-      bottom: 100px; right: 30px;
-      width: 340px;
-      background: #080d1a;
-      border: 1px solid rgba(0,245,255,0.2);
-      border-radius: 12px;
-      z-index: 998;
-      display: none;
-      flex-direction: column;
-      overflow: hidden;
-      box-shadow: 0 0 40px rgba(0,245,255,0.1);
-    }
-    #chatbot-window.open { display: flex; }
+.feat-icon {
+  font-size: 2rem;
+  color: var(--neon);
+  margin-bottom: 20px;
+  display: block;
+}
+.feat-card h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 12px;
+  font-family: 'Orbitron', monospace;
+  letter-spacing: 0.05em;
+}
+.feat-card p {
+  font-size: 0.86rem;
+  color: var(--text-dim);
+  line-height: 1.75;
+}
+.feat-line {
+  margin-top: 24px;
+  height: 1px;
+  background: linear-gradient(to right, var(--neon), transparent);
+  opacity: 0.3;
+  transition: opacity 0.3s;
+}
+.feat-card:hover .feat-line { opacity: 0.7; }
 
-    #chat-header {
-      background: rgba(0,245,255,0.08);
-      border-bottom: 1px solid rgba(0,245,255,0.15);
-      padding: 14px 18px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-family: 'Orbitron', monospace;
-      font-size: 0.75rem;
-      color: var(--neon);
-      letter-spacing: 0.1em;
-    }
-    #chat-close {
-      background: none;
-      border: none;
-      color: var(--text-dim);
-      font-size: 1rem;
-      cursor: none;
-      transition: color 0.2s;
-    }
-    #chat-close:hover { color: var(--neon); }
+/* ── TEAM ── */
+#team { background: var(--dark2); }
 
-    #chat-messages {
-      padding: 16px;
-      max-height: 380px;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    #chat-messages::-webkit-scrollbar { width: 4px; }
-    #chat-messages::-webkit-scrollbar-thumb { background: rgba(0,245,255,0.2); border-radius: 2px; }
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
 
-    .bot-msg {
-      background: rgba(0,245,255,0.06);
-      border: 1px solid rgba(0,245,255,0.12);
-      border-radius: 8px 8px 8px 2px;
-      padding: 10px 14px;
-      font-size: 0.82rem;
-      color: #c8e6f5;
-      line-height: 1.6;
-      max-width: 90%;
-    }
-    .user-msg {
-      background: rgba(123,47,255,0.15);
-      border: 1px solid rgba(123,47,255,0.25);
-      border-radius: 8px 8px 2px 8px;
-      padding: 10px 14px;
-      font-size: 0.82rem;
-      color: #c8e6f5;
-      line-height: 1.6;
-      max-width: 90%;
-      align-self: flex-end;
-    }
+.team-card {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  padding: 40px 30px;
+  text-align: center;
+  transition: all 0.4s;
+  opacity: 0;
+  transform: translateY(30px);
+}
+.team-card.visible { opacity: 1; transform: translateY(0); }
+.team-card:hover {
+  border-color: rgba(0,245,255,0.3);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
 
-    #options-container {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-top: 4px;
-    }
-    .chat-option {
-      background: transparent;
-      border: 1px solid rgba(0,245,255,0.2);
-      color: var(--neon);
-      font-family: 'Exo 2', sans-serif;
-      font-size: 0.78rem;
-      padding: 9px 14px;
-      text-align: left;
-      cursor: none;
-      border-radius: 6px;
-      transition: all 0.2s;
-    }
-    .chat-option:hover {
-      background: rgba(0,245,255,0.08);
-      border-color: var(--neon);
-    }
-    #reset-btn {
-      margin-top: 6px;
-      background: transparent;
-      border: 1px dashed rgba(0,245,255,0.2);
-      color: var(--text-dim);
-      font-size: 0.72rem;
-      padding: 7px 14px;
-      cursor: none;
-      border-radius: 6px;
-      font-family: 'Exo 2', sans-serif;
-      transition: all 0.2s;
-    }
-    #reset-btn:hover { color: var(--neon); border-color: var(--neon); }
+.team-avatar {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  background: transparent;
+  border: 2px solid var(--c, var(--neon));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Orbitron', monospace;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--c, var(--neon));
+  margin: 0 auto 20px;
+  box-shadow: 0 0 20px color-mix(in srgb, var(--c, var(--neon)) 30%, transparent);
+  transition: box-shadow 0.3s;
+}
+.team-card:hover .team-avatar {
+  box-shadow: 0 0 40px color-mix(in srgb, var(--c, var(--neon)) 60%, transparent);
+}
 
-    html.light-mode #chatbot-window { background: #f0f5ff; border-color: rgba(0,100,150,0.2); }
-    html.light-mode .bot-msg { color: #0a1628; background: rgba(0,100,150,0.06); }
-    html.light-mode .user-msg { color: #0a1628; }
-    html.light-mode .chat-option { color: #0055aa; border-color: rgba(0,100,150,0.3); }
-    html.light-mode #chat-header { color: #0055aa; }
-  </style>
+.team-card h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 6px;
+}
+.team-role {
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--neon);
+  margin-bottom: 16px;
+}
+.team-bio {
+  font-size: 0.86rem;
+  color: var(--text-dim);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+.team-tags {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.team-tags span {
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  border: 1px solid var(--glass-border);
+  padding: 4px 10px;
+  color: var(--text-dim);
+}
 
-  <style>
-    #chat-input-row {
-      display: flex;
-      gap: 8px;
-      padding: 10px 14px;
-      border-top: 1px solid rgba(0,245,255,0.12);
-      background: rgba(0,245,255,0.02);
-    }
-    #chat-input {
-      flex: 1;
-      background: rgba(0,245,255,0.05);
-      border: 1px solid rgba(0,245,255,0.15);
-      border-radius: 6px;
-      padding: 8px 12px;
-      color: #c8e6f5;
-      font-family: 'Exo 2', sans-serif;
-      font-size: 0.8rem;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-    #chat-input:focus { border-color: rgba(0,245,255,0.4); }
-    #chat-input::placeholder { color: #4a6a88; }
-    #chat-send {
-      background: var(--neon);
-      border: none;
-      border-radius: 6px;
-      padding: 8px 14px;
-      color: #04060f;
-      font-family: 'Orbitron', monospace;
-      font-size: 0.7rem;
-      font-weight: 700;
-      cursor: none;
-      transition: all 0.2s;
-    }
-    #chat-send:hover { background: #fff; }
-    #chat-send:disabled { opacity: 0.4; }
-    .bot-msg.typing { opacity: 0.6; font-style: italic; }
-    html.light-mode #chat-input { color: #0a1628; background: rgba(0,100,150,0.05); border-color: rgba(0,100,150,0.2); }
-    html.light-mode #chat-input::placeholder { color: #7a9abb; }
-    html.light-mode #chat-send { color: #04060f; }
-    html.light-mode #chat-input-row { border-color: rgba(0,100,150,0.15); }
-  </style>
+/* ── FOOTER ── */
+footer {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 70px 40px 50px;
+  background: var(--dark);
+  border-top: 1px solid var(--glass-border);
+  overflow: hidden;
+}
+.footer-glow {
+  position: absolute;
+  bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 600px; height: 200px;
+  background: radial-gradient(ellipse, rgba(0,245,255,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.footer-logo {
+  font-family: 'Orbitron', monospace;
+  font-size: 2rem;
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 16px;
+}
+.footer-logo span { color: var(--neon); }
+.footer-text {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+.footer-sub {
+  font-size: 0.75rem;
+  color: rgba(74,106,136,0.5);
+  font-style: italic;
+  letter-spacing: 0.1em;
+}
 
-  <script>
-    const SYSTEM_PROMPT = `You are a helpful assistant for Kamal Model Sr. Sec. School's futuristic 2040 vision website. Answer questions about the school and the website concisely and in a friendly tone.
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
 
-Key facts:
-- School name: Kamal Model Sr. Sec. School
-- Location: Mohan Garden, New Delhi
-- Founded: 1993
-- Ranking: 4th in West Delhi
-- Website made by: Atulya Jha (Grade 8 student, Lead Designer & Developer)
-- Principal/Patron: Deepti Chaurasia
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  #navbar { padding: 16px 24px; }
+  .nav-links { gap: 20px; }
+  section { padding: 80px 24px; }
 
-2040 Vision Timeline:
-- 2024: Baseline — traditional classrooms, physical labs
-- 2027: Digital Overhaul — smart boards, AI learning assistants, paperless
-- 2030: AR Campus Launch — holographic corridors, simulation labs
-- 2033: Neural Learning Pods — brainwave-adaptive personalized learning
-- 2037: Zero-Carbon Campus — solar glass, kinetic tiles, vertical gardens
-- 2040: Full Vision — sentient campus ecosystem, borderless education
+  .features-grid { grid-template-columns: 1fr 1fr; }
+  .team-grid { grid-template-columns: 1fr; max-width: 400px; }
 
-2040 Features:
-1. Holographic Classrooms
-2. AI Mentor System
-3. Biometric Security
-4. Neural Skill Labs
-5. Eco-Smart Architecture
-6. Global Classrooms
+  .timeline-track::before { left: 20px; }
+  .tl-item.left, .tl-item.right { flex-direction: row; }
+  .tl-dot { margin: 0 16px 0 13px; }
+  .tl-card { width: calc(100% - 70px); }
+}
 
-Keep answers short (2-4 sentences). If asked something unrelated, politely say you only know about this school and its 2040 vision.`;
+@media (max-width: 600px) {
+  .features-grid { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+}
 
-    const chatHistory = [];
+#theme-toggle {
+  background: transparent;
+  border: 1px solid var(--glass-border);
+  color: var(--text);
+  font-family: 'Orbitron', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  padding: 8px 16px;
+  cursor: none;
+  transition: all 0.3s;
+}
+#theme-toggle:hover {
+  border-color: var(--neon);
+  color: var(--neon);
+}
 
-    function toggleChat() {
-      document.getElementById('chatbot-window').classList.toggle('open');
-    }
+html.light-mode {
+  --dark: #f8faff;
+  --dark2: #f0f5ff;
+  --glass: rgba(0,100,150,0.05);
+  --glass-border: rgba(0,100,150,0.2);
+  --text: #0a1628;
+  --text-dim: #4a6a99;
+}
 
-    function addMessage(text, type, extra) {
-      const messages = document.getElementById('chat-messages');
-      const div = document.createElement('div');
-      div.className = type + (extra ? ' ' + extra : '');
-      div.textContent = text;
-      messages.appendChild(div);
-      messages.scrollTop = messages.scrollHeight;
-      return div;
-    }
+html.light-mode .hero-title,
+html.light-mode .tl-card h3,
+html.light-mode .feat-card h3,
+html.light-mode .team-card h3,
+html.light-mode .section-header h2,
+html.light-mode .nav-logo,
+html.light-mode .footer-logo { color: #0d1f3c; }
 
-    async function sendMessage() {
-     const input = document.getElementById('chat-input');
-  const sendBtn = document.getElementById('chat-send');
-  const userText = input.value.trim();
-  if (!userText) return;
+html.light-mode .hero-sub,
+html.light-mode .tl-card p,
+html.light-mode .feat-card p,
+html.light-mode .team-bio,
+html.light-mode .section-header p,
+html.light-mode .footer-text,
+html.light-mode .scroll-hint,
+html.light-mode .team-tags span,
+html.light-mode .nav-links a,
+html.light-mode .nav-status { color: #2a4a6a; }
 
-  input.value = '';
-  sendBtn.disabled = true;
-
-  addMessage(userText, 'user-msg');
-  chatHistory.push({ role: 'user', content: userText });
-
-  const typing = addMessage('Thinking...', 'bot-msg', 'typing');
-
-  try {
-    const response = await fetch('http://localhost:3000/chat', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message: userText })
-    });
-
-    const data = await response.json();
-
-    typing.remove();
-    addMessage(data.reply, 'bot-msg');
-
-    chatHistory.push({ role: 'assistant', content: data.reply });
-
-  } catch (err) {
-    typing.remove();
-    addMessage('Server error. Is backend running?', 'bot-msg');
-    console.error(err);
-  }
-
-  sendBtn.disabled = false;
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      const inputRow = document.createElement('div');
-      inputRow.id = 'chat-input-row';
-      inputRow.innerHTML = '<input type="text" id="chat-input" placeholder="Ask anything about the school..." /><button id="chat-send" onclick="sendMessage()">SEND</button>';
-      document.getElementById('chatbot-window').appendChild(inputRow);
-      document.getElementById('chat-input').addEventListener('keydown', function(e) {
-        if (e.key === 'Enter') sendMessage();
-      });
-    });
-  </script>
-
-</body>
-</html>
+html.light-mode #navbar { background: rgba(248,250,255,0.88); }
+html.light-mode body { background: #f8faff; }
