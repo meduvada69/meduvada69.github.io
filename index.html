@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kamal Model Sr. Sec. School 2040</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <div id="cursor"></div>
+  <div id="cursor-ring"></div>
+
+  <!-- Particle canvas -->
+  <canvas id="particles"></canvas>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <div class="nav-logo">KM<span>S</span>2040</div>
+    <ul class="nav-links">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#timeline">Timeline</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#team">Visionaries</a></li>
+    </ul>
+    <div class="nav-status">
+      <span class="status-dot"></span> LIVE — 2024
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-grid-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">EST. 1993 &nbsp;|&nbsp; REIMAGINED 2040</p>
+      <h1 class="hero-title">
+        The School<br/>
+        <span class="glitch" data-text="of Tomorrow">of Tomorrow</span>
+      </h1>
+      <p class="hero-sub">
+        A celebrated West Delhi institution evolving beyond brick and mortar —<br/>
+        into light, intelligence, and possibility.
+      </p>
+      <div class="hero-btns">
+        <a href="#timeline" class="btn-primary">Explore the Future</a>
+        <a href="#features" class="btn-ghost">View Features</a>
+      </div>
+    </div>
+    <div class="hero-orb"></div>
+    <div class="hero-orb orb2"></div>
+    <div class="scroll-hint">SCROLL &darr;</div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section id="timeline">
+    <div class="section-header">
+      <span class="section-tag">EVOLUTION</span>
+      <h2>The Road to <span class="accent">2040</span></h2>
+      <p>Key milestones in our transformation journey</p>
+    </div>
+    <div class="timeline-track">
+
+      <div class="tl-item left" data-year="2024">
+        <div class="tl-card">
+          <div class="tl-year">2024</div>
+          <h3>The Baseline</h3>
+          <p>Traditional classrooms, physical labs, printed textbooks, and a campus built for the 20th century.</p>
+        </div>
+        <div class="tl-dot"></div>
+      </div>
+
+      <div class="tl-item right" data-year="2027">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-year">2027</div>
+          <h3>Digital Overhaul</h3>
+          <p>Smart boards replace chalkboards. Every student gets a personal AI learning assistant. School goes paperless.</p>
+        </div>
+      </div>
+
+      <div class="tl-item left" data-year="2030">
+        <div class="tl-card">
+          <div class="tl-year">2030</div>
+          <h3>AR Campus Launch</h3>
+          <p>Augmented Reality overlays transform corridors into interactive knowledge zones. Labs become holographic simulation chambers.</p>
+        </div>
+        <div class="tl-dot"></div>
+      </div>
+
+      <div class="tl-item right" data-year="2033">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-year">2033</div>
+          <h3>Neural Learning Pods</h3>
+          <p>Personalized learning pods adapt in real-time to each student's brainwave patterns and comprehension speed.</p>
+        </div>
+      </div>
+
+      <div class="tl-item left" data-year="2037">
+        <div class="tl-card">
+          <div class="tl-year">2037</div>
+          <h3>Zero-Carbon Campus</h3>
+          <p>Solar glass walls, kinetic floor tiles, and a vertical garden system make the school fully self-sustaining.</p>
+        </div>
+        <div class="tl-dot"></div>
+      </div>
+
+      <div class="tl-item right" data-year="2040">
+        <div class="tl-dot pulse-dot"></div>
+        <div class="tl-card highlight-card">
+          <div class="tl-year neon-year">2040</div>
+          <h3>The Vision Realized</h3>
+          <p>A fully sentient campus ecosystem — adaptive, sustainable, and borderless. Education without limits.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="features">
+    <div class="section-header">
+      <span class="section-tag">INNOVATIONS</span>
+      <h2>What <span class="accent">Changes</span> Everything</h2>
+      <p>Six pillars of the 2040 campus experience</p>
+    </div>
+    <div class="features-grid">
+
+      <div class="feat-card" data-index="0">
+        <div class="feat-icon">⬡</div>
+        <h3>Holographic Classrooms</h3>
+        <p>Teachers and students meet in shared 3D environments. Geography is no longer a barrier to world-class education.</p>
+        <div class="feat-line"></div>
+      </div>
+
+      <div class="feat-card" data-index="1">
+        <div class="feat-icon">◈</div>
+        <h3>AI Mentor System</h3>
+        <p>Each student is paired with a personalised AI that tracks learning gaps, emotional wellbeing, and career trajectory.</p>
+        <div class="feat-line"></div>
+      </div>
+
+      <div class="feat-card" data-index="2">
+        <div class="feat-icon">⬙</div>
+        <h3>Biometric Security</h3>
+        <p>Facial recognition entry, emotion-aware attendance, and real-time health monitoring keep students safe at all times.</p>
+        <div class="feat-line"></div>
+      </div>
+
+      <div class="feat-card" data-index="3">
+        <div class="feat-icon">◯</div>
+        <h3>Neural Skill Labs</h3>
+        <p>Hands-on labs where students build, code, and simulate — from quantum circuits to genetic engineering prototypes.</p>
+        <div class="feat-line"></div>
+      </div>
+
+      <div class="feat-card" data-index="4">
+        <div class="feat-icon">⬡</div>
+        <h3>Eco-Smart Architecture</h3>
+        <p>Living walls, solar-integrated glass, and rainwater loops create a campus that breathes and powers itself.</p>
+        <div class="feat-line"></div>
+      </div>
+
+      <div class="feat-card" data-index="5">
+        <div class="feat-icon">◈</div>
+        <h3>Global Classrooms</h3>
+        <p>Real-time language translation lets students collaborate with peers in Tokyo, São Paulo, or Nairobi — live.</p>
+        <div class="feat-line"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section id="team">
+    <div class="section-header">
+      <span class="section-tag">VISIONARIES</span>
+      <h2>The Minds <span class="accent">Behind</span> the Dream</h2>
+      <p>Students and faculty who dared to imagine 2040</p>
+    </div>
+    <div class="team-grid">
+
+      <div class="team-card">
+        <div class="team-avatar" style="--c:#00f5ff">A</div>
+        <h3>Aayu</h3>
+        <p class="team-role">Lead Designer & Developer</p>
+        <p class="team-bio">Grade 8 technologist with a vision for AI-powered education and zero boundaries.</p>
+        <div class="team-tags">
+          <span>HTML/CSS/JS</span><span>AI</span><span>Design</span>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-avatar" style="--c:#7b2fff">S</div>
+        <h3>Sr. Margaret</h3>
+        <p class="team-role">Principal & Patron</p>
+        <p class="team-bio">40 years of nurturing minds. Believes technology should amplify the human spirit, not replace it.</p>
+        <div class="team-tags">
+          <span>Leadership</span><span>Vision</span>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-avatar" style="--c:#ff2d78">R</div>
+        <h3>Mr. Rajan</h3>
+        <p class="team-role">Head of Innovation</p>
+        <p class="team-bio">Physics teacher turned futurist. Pioneering the school's AR lab and smart infrastructure plans.</p>
+        <div class="team-tags">
+          <span>Physics</span><span>AR/VR</span><span>EdTech</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-glow"></div>
+    <p class="footer-logo">KM<span>S</span>2040</p>
+    <p class="footer-text">A vision project by students of Kamal Model Sr. Sec. School &nbsp;|&nbsp; Competition Entry 2024</p>
+    <p class="footer-sub">Designed with ambition. Built for tomorrow.</p>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="script.js"></script>
+
+  <!-- CHATBOT -->
+  <div id="chatbot-bubble" onclick="toggleChat()">💬</div>
+
+  <div id="chatbot-window">
+    <div id="chat-header">
+      <span>KMS Assistant</span>
+      <button onclick="toggleChat()" id="chat-close">✕</button>
+    </div>
+    <div id="chat-messages">
+      <div class="bot-msg">Hi! I'm the KMS 2040 AI assistant. Ask me anything about the school or the 2040 vision! 🚀</div>
+      
+    </div>
+  </div>
+
+  <style>
+    #chatbot-bubble {
+      position: fixed;
+      bottom: 30px; right: 30px;
+      width: 56px; height: 56px;
+      background: var(--neon);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+      cursor: none;
+      z-index: 999;
+      box-shadow: 0 0 20px rgba(0,245,255,0.5);
+      transition: transform 0.3s;
+    }
+    #chatbot-bubble:hover { transform: scale(1.1); }
+
+    #chatbot-window {
+      position: fixed;
+      bottom: 100px; right: 30px;
+      width: 340px;
+      background: #080d1a;
+      border: 1px solid rgba(0,245,255,0.2);
+      border-radius: 12px;
+      z-index: 998;
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 0 40px rgba(0,245,255,0.1);
+    }
+    #chatbot-window.open { display: flex; }
+
+    #chat-header {
+      background: rgba(0,245,255,0.08);
+      border-bottom: 1px solid rgba(0,245,255,0.15);
+      padding: 14px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'Orbitron', monospace;
+      font-size: 0.75rem;
+      color: var(--neon);
+      letter-spacing: 0.1em;
+    }
+    #chat-close {
+      background: none;
+      border: none;
+      color: var(--text-dim);
+      font-size: 1rem;
+      cursor: none;
+      transition: color 0.2s;
+    }
+    #chat-close:hover { color: var(--neon); }
+
+    #chat-messages {
+      padding: 16px;
+      max-height: 380px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    #chat-messages::-webkit-scrollbar { width: 4px; }
+    #chat-messages::-webkit-scrollbar-thumb { background: rgba(0,245,255,0.2); border-radius: 2px; }
+
+    .bot-msg {
+      background: rgba(0,245,255,0.06);
+      border: 1px solid rgba(0,245,255,0.12);
+      border-radius: 8px 8px 8px 2px;
+      padding: 10px 14px;
+      font-size: 0.82rem;
+      color: #c8e6f5;
+      line-height: 1.6;
+      max-width: 90%;
+    }
+    .user-msg {
+      background: rgba(123,47,255,0.15);
+      border: 1px solid rgba(123,47,255,0.25);
+      border-radius: 8px 8px 2px 8px;
+      padding: 10px 14px;
+      font-size: 0.82rem;
+      color: #c8e6f5;
+      line-height: 1.6;
+      max-width: 90%;
+      align-self: flex-end;
+    }
+
+    #options-container {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 4px;
+    }
+    .chat-option {
+      background: transparent;
+      border: 1px solid rgba(0,245,255,0.2);
+      color: var(--neon);
+      font-family: 'Exo 2', sans-serif;
+      font-size: 0.78rem;
+      padding: 9px 14px;
+      text-align: left;
+      cursor: none;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+    .chat-option:hover {
+      background: rgba(0,245,255,0.08);
+      border-color: var(--neon);
+    }
+    #reset-btn {
+      margin-top: 6px;
+      background: transparent;
+      border: 1px dashed rgba(0,245,255,0.2);
+      color: var(--text-dim);
+      font-size: 0.72rem;
+      padding: 7px 14px;
+      cursor: none;
+      border-radius: 6px;
+      font-family: 'Exo 2', sans-serif;
+      transition: all 0.2s;
+    }
+    #reset-btn:hover { color: var(--neon); border-color: var(--neon); }
+
+    html.light-mode #chatbot-window { background: #f0f5ff; border-color: rgba(0,100,150,0.2); }
+    html.light-mode .bot-msg { color: #0a1628; background: rgba(0,100,150,0.06); }
+    html.light-mode .user-msg { color: #0a1628; }
+    html.light-mode .chat-option { color: #0055aa; border-color: rgba(0,100,150,0.3); }
+    html.light-mode #chat-header { color: #0055aa; }
+  </style>
+
+  <style>
+    #chat-input-row {
+      display: flex;
+      gap: 8px;
+      padding: 10px 14px;
+      border-top: 1px solid rgba(0,245,255,0.12);
+      background: rgba(0,245,255,0.02);
+    }
+    #chat-input {
+      flex: 1;
+      background: rgba(0,245,255,0.05);
+      border: 1px solid rgba(0,245,255,0.15);
+      border-radius: 6px;
+      padding: 8px 12px;
+      color: #c8e6f5;
+      font-family: 'Exo 2', sans-serif;
+      font-size: 0.8rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    #chat-input:focus { border-color: rgba(0,245,255,0.4); }
+    #chat-input::placeholder { color: #4a6a88; }
+    #chat-send {
+      background: var(--neon);
+      border: none;
+      border-radius: 6px;
+      padding: 8px 14px;
+      color: #04060f;
+      font-family: 'Orbitron', monospace;
+      font-size: 0.7rem;
+      font-weight: 700;
+      cursor: none;
+      transition: all 0.2s;
+    }
+    #chat-send:hover { background: #fff; }
+    #chat-send:disabled { opacity: 0.4; }
+    .bot-msg.typing { opacity: 0.6; font-style: italic; }
+    html.light-mode #chat-input { color: #0a1628; background: rgba(0,100,150,0.05); border-color: rgba(0,100,150,0.2); }
+    html.light-mode #chat-input::placeholder { color: #7a9abb; }
+    html.light-mode #chat-send { color: #04060f; }
+    html.light-mode #chat-input-row { border-color: rgba(0,100,150,0.15); }
+  </style>
+
+  <script>
+    const SYSTEM_PROMPT = `You are a helpful assistant for Kamal Model Sr. Sec. School's futuristic 2040 vision website. Answer questions about the school and the website concisely and in a friendly tone.
+
+Key facts:
+- School name: Kamal Model Sr. Sec. School
+- Location: Mohan Garden, New Delhi
+- Founded: 1993
+- Ranking: 4th in West Delhi
+- Website made by: Atulya Jha (Grade 8 student, Lead Designer & Developer)
+- Principal/Patron: Deepti Chaurasia
+
+2040 Vision Timeline:
+- 2024: Baseline — traditional classrooms, physical labs
+- 2027: Digital Overhaul — smart boards, AI learning assistants, paperless
+- 2030: AR Campus Launch — holographic corridors, simulation labs
+- 2033: Neural Learning Pods — brainwave-adaptive personalized learning
+- 2037: Zero-Carbon Campus — solar glass, kinetic tiles, vertical gardens
+- 2040: Full Vision — sentient campus ecosystem, borderless education
+
+2040 Features:
+1. Holographic Classrooms
+2. AI Mentor System
+3. Biometric Security
+4. Neural Skill Labs
+5. Eco-Smart Architecture
+6. Global Classrooms
+
+Keep answers short (2-4 sentences). If asked something unrelated, politely say you only know about this school and its 2040 vision.`;
+
+    const chatHistory = [];
+
+    function toggleChat() {
+      document.getElementById('chatbot-window').classList.toggle('open');
+    }
+
+    function addMessage(text, type, extra) {
+      const messages = document.getElementById('chat-messages');
+      const div = document.createElement('div');
+      div.className = type + (extra ? ' ' + extra : '');
+      div.textContent = text;
+      messages.appendChild(div);
+      messages.scrollTop = messages.scrollHeight;
+      return div;
+    }
+
+    async function sendMessage() {
+     const input = document.getElementById('chat-input');
+  const sendBtn = document.getElementById('chat-send');
+  const userText = input.value.trim();
+  if (!userText) return;
+
+  input.value = '';
+  sendBtn.disabled = true;
+
+  addMessage(userText, 'user-msg');
+  chatHistory.push({ role: 'user', content: userText });
+
+  const typing = addMessage('Thinking...', 'bot-msg', 'typing');
+
+  try {
+    const response = await fetch('http://localhost:3000/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: userText })
+    });
+
+    const data = await response.json();
+
+    typing.remove();
+    addMessage(data.reply, 'bot-msg');
+
+    chatHistory.push({ role: 'assistant', content: data.reply });
+
+  } catch (err) {
+    typing.remove();
+    addMessage('Server error. Is backend running?', 'bot-msg');
+    console.error(err);
+  }
+
+  sendBtn.disabled = false;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const inputRow = document.createElement('div');
+      inputRow.id = 'chat-input-row';
+      inputRow.innerHTML = '<input type="text" id="chat-input" placeholder="Ask anything about the school..." /><button id="chat-send" onclick="sendMessage()">SEND</button>';
+      document.getElementById('chatbot-window').appendChild(inputRow);
+      document.getElementById('chat-input').addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') sendMessage();
+      });
+    });
+  </script>
+
+</body>
+</html>
