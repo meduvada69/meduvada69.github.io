@@ -518,10 +518,10 @@ section {
 }
 
 .team-card {
-  flex: 0 1 300px;
+  flex: 0 0 320px;
   background: var(--glass);
   border: 1px solid var(--glass-border);
-  padding: 40px 30px;
+  padding: 50px 40px;
   text-align: center;
   transition: all 0.4s;
   opacity: 0;
